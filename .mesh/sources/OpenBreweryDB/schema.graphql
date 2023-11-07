@@ -1,0 +1,50 @@
+schema {
+  query: Query
+}
+
+directive @globalOptions(sourceName: String, endpoint: String, operationHeaders: ObjMap, queryStringOptions: ObjMap, queryParams: ObjMap) on OBJECT
+
+directive @httpOperation(path: String, operationSpecificHeaders: ObjMap, httpMethod: HTTPMethod, isBinary: Boolean, requestBaseBody: ObjMap, queryParamArgMap: ObjMap, queryStringOptionsByParam: ObjMap) on FIELD_DEFINITION
+
+type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-service.wirefreethought.com/v1/") {
+  breweries(byCity: String): [query_breweries_items] @httpOperation(path: "breweries?by_city={args.byCity}", httpMethod: GET)
+}
+
+type query_breweries_items {
+  id: String
+  name: String
+  brewery_type: String
+  address_1: String
+  address_2: Void
+  address_3: Void
+  city: String
+  state_province: String
+  postal_code: String
+  country: String
+  longitude: String
+  latitude: String
+  phone: String
+  website_url: URL
+  state: String
+  street: String
+}
+
+"Represents empty values"
+scalar Void
+
+"A field whose value conforms to the standard URL format as specified in RFC3986: https://www.ietf.org/rfc/rfc3986.txt."
+scalar URL
+
+scalar ObjMap
+
+enum HTTPMethod {
+  GET
+  HEAD
+  POST
+  PUT
+  DELETE
+  CONNECT
+  OPTIONS
+  TRACE
+  PATCH
+}

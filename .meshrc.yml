@@ -1,0 +1,43 @@
+sources:
+  - name: GeoDB
+    handler:
+      openapi:
+        source: https://wirefreethought.github.io/geodb-cities-api-docs/swagger.json
+        endpoint: http://geodb-free-service.wirefreethought.com/v1/
+  - name: OpenBreweryDB
+    handler:
+      jsonSchema:
+        endpoint: https://api.openbrewerydb.org/v1/
+        operations:
+          - type: Query
+            field: breweries
+            path: breweries?by_city={args.byCity}
+            method: GET
+            responseSample: ./src/open-brewery/breweries-sample.json
+            argTypeMap:
+              byCity:
+                type: string
+
+transforms:
+  - rename:
+      renames:
+        - from:
+            type: Query
+            field: (.*)UsingGET
+          to: 
+            type: Query
+            field: $1
+          useRegExpForFields: true
+
+additionalTypeDefs: |
+  extend type PopulatedPlaceSummary {
+    breweries: [query_breweries_items] @resolveTo(
+      sourceName: "OpenBreweryDB",
+      sourceTypeName: "Query",
+      sourceFieldName: "breweries",
+      requiredSelectionSet: "{ name }",
+      sourceArgs: {
+        byCity: "{root.name}"
+      }
+    )
+  }
