@@ -13,7 +13,7 @@ directive @globalOptions(sourceName: String, endpoint: String, operationHeaders:
 directive @httpOperation(path: String, operationSpecificHeaders: ObjMap, httpMethod: HTTPMethod, isBinary: Boolean, requestBaseBody: ObjMap, queryParamArgMap: ObjMap, queryStringOptionsByParam: ObjMap) on FIELD_DEFINITION
 
 type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-service.wirefreethought.com/v1/") {
-  "Find administrative divisions, filtering by optional criteria. If no criteria are set, you will get back all\nknown divisions.\n"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/adminDivisions`\nFind administrative divisions, filtering by optional criteria. If no criteria are set, you will get back all\nknown divisions.\n\n"
   findAdminDivisionsUsingGET(
     "Only places near this location. Latitude/longitude in ISO-6709 format: ±DD.DDDD±DDD.DDDD"
     location: String
@@ -50,7 +50,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "Whether to include any divisions marked deleted: ALL | SINCE_YESTERDAY | SINCE_LAST_WEEK | NONE"
     includeDeleted: String = "NONE"
   ): findAdminDivisionsUsingGET_response @httpOperation(path: "/geo/adminDivisions", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"location\":\"location\",\"radius\":\"radius\",\"distanceUnit\":\"distanceUnit\",\"countryIds\":\"countryIds\",\"excludedCountryIds\":\"excludedCountryIds\",\"minPopulation\":\"minPopulation\",\"maxPopulation\":\"maxPopulation\",\"namePrefix\":\"namePrefix\",\"namePrefixDefaultLangResults\":\"namePrefixDefaultLangResults\",\"timeZoneIds\":\"timeZoneIds\",\"asciiMode\":\"asciiMode\",\"hateoasMode\":\"hateoasMode\",\"languageCode\":\"languageCode\",\"limit\":\"limit\",\"offset\":\"offset\",\"sort\":\"sort\",\"includeDeleted\":\"includeDeleted\"}")
-  "Get administrative division details such as location coordinates, population, and\nelevation above sea-level (if available).\n"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/adminDivisions/{args.divisionId}`\nGet administrative division details such as location coordinates, population, and\nelevation above sea-level (if available).\n\n"
   getAdminDivisionUsingGET(
     "An admin-division id (either native 'id' or 'wikiDataId')"
     divisionId: String!
@@ -59,7 +59,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "Display results in this language"
     languageCode: String
   ): getAdminDivisionUsingGET_response @httpOperation(path: "/geo/adminDivisions/{args.divisionId}", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"asciiMode\":\"asciiMode\",\"languageCode\":\"languageCode\"}")
-  "Find cities near the given administrative division, filtering by optional criteria. If no criteria are set, you\nwill get back all known cities.\n"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/adminDivisions/{args.divisionId}/nearbyCities`\nFind cities near the given administrative division, filtering by optional criteria. If no criteria are set, you\nwill get back all known cities.\n\n"
   findCitiesNearAdminDivisionUsingGET(
     "An admin-division id (either native 'id' or 'wikiDataId')"
     divisionId: String!
@@ -98,7 +98,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "Whether to include any divisions marked deleted: ALL | SINCE_YESTERDAY | SINCE_LAST_WEEK | NONE"
     includeDeleted: String = "NONE"
   ): findCitiesNearAdminDivisionUsingGET_response @httpOperation(path: "/geo/adminDivisions/{args.divisionId}/nearbyCities", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"radius\":\"radius\",\"distanceUnit\":\"distanceUnit\",\"countryIds\":\"countryIds\",\"excludedCountryIds\":\"excludedCountryIds\",\"minPopulation\":\"minPopulation\",\"maxPopulation\":\"maxPopulation\",\"namePrefix\":\"namePrefix\",\"namePrefixDefaultLangResults\":\"namePrefixDefaultLangResults\",\"timeZoneIds\":\"timeZoneIds\",\"types\":\"types\",\"asciiMode\":\"asciiMode\",\"hateoasMode\":\"hateoasMode\",\"languageCode\":\"languageCode\",\"limit\":\"limit\",\"offset\":\"offset\",\"sort\":\"sort\",\"includeDeleted\":\"includeDeleted\"}")
-  "Find administrative divisions near the given division, filtering by optional criteria. If no criteria\nare set, you will get back all known divisions.\n"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/adminDivisions/{args.divisionId}/nearbyDivisions`\nFind administrative divisions near the given division, filtering by optional criteria. If no criteria\nare set, you will get back all known divisions.\n\n"
   findDivisionsNearAdminDivisionUsingGET(
     "An admin-division id (either native 'id' or 'wikiDataId')"
     divisionId: String!
@@ -135,7 +135,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "Whether to include any divisions marked deleted: ALL | SINCE_YESTERDAY | SINCE_LAST_WEEK | NONE"
     includeDeleted: String = "NONE"
   ): findDivisionsNearAdminDivisionUsingGET_response @httpOperation(path: "/geo/adminDivisions/{args.divisionId}/nearbyDivisions", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"radius\":\"radius\",\"distanceUnit\":\"distanceUnit\",\"countryIds\":\"countryIds\",\"excludedCountryIds\":\"excludedCountryIds\",\"minPopulation\":\"minPopulation\",\"maxPopulation\":\"maxPopulation\",\"namePrefix\":\"namePrefix\",\"namePrefixDefaultLangResults\":\"namePrefixDefaultLangResults\",\"timeZoneIds\":\"timeZoneIds\",\"asciiMode\":\"asciiMode\",\"hateoasMode\":\"hateoasMode\",\"languageCode\":\"languageCode\",\"limit\":\"limit\",\"offset\":\"offset\",\"sort\":\"sort\",\"includeDeleted\":\"includeDeleted\"}")
-  "Find places near the given administrative division, filtering by optional criteria. If no criteria are set, you\nwill get back all known places.\n"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/adminDivisions/{args.divisionId}/nearbyPlaces`\nFind places near the given administrative division, filtering by optional criteria. If no criteria are set, you\nwill get back all known places.\n\n"
   findPlacesNearAdminDivisionUsingGET(
     "An admin-division id (either native 'id' or 'wikiDataId')"
     divisionId: String!
@@ -174,7 +174,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "Whether to include any divisions marked deleted: ALL | SINCE_YESTERDAY | SINCE_LAST_WEEK | NONE"
     includeDeleted: String = "NONE"
   ): findPlacesNearAdminDivisionUsingGET_response @httpOperation(path: "/geo/adminDivisions/{args.divisionId}/nearbyPlaces", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"radius\":\"radius\",\"distanceUnit\":\"distanceUnit\",\"countryIds\":\"countryIds\",\"excludedCountryIds\":\"excludedCountryIds\",\"minPopulation\":\"minPopulation\",\"maxPopulation\":\"maxPopulation\",\"namePrefix\":\"namePrefix\",\"namePrefixDefaultLangResults\":\"namePrefixDefaultLangResults\",\"timeZoneIds\":\"timeZoneIds\",\"types\":\"types\",\"asciiMode\":\"asciiMode\",\"hateoasMode\":\"hateoasMode\",\"languageCode\":\"languageCode\",\"limit\":\"limit\",\"offset\":\"offset\",\"sort\":\"sort\",\"includeDeleted\":\"includeDeleted\"}")
-  "Find cities, filtering by optional criteria. If no criteria are set, you will get back all known cities.\n"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/cities`\nFind cities, filtering by optional criteria. If no criteria are set, you will get back all known cities.\n\n"
   findCitiesUsingGET(
     "Only places near this location. Latitude/longitude in ISO-6709 format: ±DD.DDDD±DDD.DDDD"
     location: String
@@ -213,7 +213,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "Whether to include any divisions marked deleted: ALL | SINCE_YESTERDAY | SINCE_LAST_WEEK | NONE"
     includeDeleted: String = "NONE"
   ): findCitiesUsingGET_response @httpOperation(path: "/geo/cities", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"location\":\"location\",\"radius\":\"radius\",\"distanceUnit\":\"distanceUnit\",\"countryIds\":\"countryIds\",\"excludedCountryIds\":\"excludedCountryIds\",\"minPopulation\":\"minPopulation\",\"maxPopulation\":\"maxPopulation\",\"namePrefix\":\"namePrefix\",\"namePrefixDefaultLangResults\":\"namePrefixDefaultLangResults\",\"timeZoneIds\":\"timeZoneIds\",\"types\":\"types\",\"asciiMode\":\"asciiMode\",\"hateoasMode\":\"hateoasMode\",\"languageCode\":\"languageCode\",\"limit\":\"limit\",\"offset\":\"offset\",\"sort\":\"sort\",\"includeDeleted\":\"includeDeleted\"}")
-  "Find cities near the given city, filtering by optional criteria. If no criteria are set, you will get\nback all cities within the default radius.\n"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/cities/{args.cityId}/nearbyCities`\nFind cities near the given city, filtering by optional criteria. If no criteria are set, you will get\nback all cities within the default radius.\n\n"
   findCitiesNearCityUsingGET(
     "A city id (either native 'id' or 'wikiDataId')"
     cityId: String!
@@ -252,7 +252,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "Whether to include any divisions marked deleted: ALL | SINCE_YESTERDAY | SINCE_LAST_WEEK | NONE"
     includeDeleted: String = "NONE"
   ): findCitiesNearCityUsingGET_response @httpOperation(path: "/geo/cities/{args.cityId}/nearbyCities", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"radius\":\"radius\",\"distanceUnit\":\"distanceUnit\",\"countryIds\":\"countryIds\",\"excludedCountryIds\":\"excludedCountryIds\",\"minPopulation\":\"minPopulation\",\"maxPopulation\":\"maxPopulation\",\"namePrefix\":\"namePrefix\",\"namePrefixDefaultLangResults\":\"namePrefixDefaultLangResults\",\"timeZoneIds\":\"timeZoneIds\",\"types\":\"types\",\"asciiMode\":\"asciiMode\",\"hateoasMode\":\"hateoasMode\",\"languageCode\":\"languageCode\",\"limit\":\"limit\",\"offset\":\"offset\",\"sort\":\"sort\",\"includeDeleted\":\"includeDeleted\"}")
-  "Find administrative divisions near the given city, filtering by optional criteria. If no criteria are set, you will get\nback all divisions within the default radius.\n"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/cities/{args.cityId}/nearbyDivisions`\nFind administrative divisions near the given city, filtering by optional criteria. If no criteria are set, you will get\nback all divisions within the default radius.\n\n"
   findDivisionsNearCityUsingGET(
     "A city id (either native 'id' or 'wikiDataId')"
     cityId: String!
@@ -289,7 +289,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "Whether to include any divisions marked deleted: ALL | SINCE_YESTERDAY | SINCE_LAST_WEEK | NONE"
     includeDeleted: String = "NONE"
   ): findDivisionsNearCityUsingGET_response @httpOperation(path: "/geo/cities/{args.cityId}/nearbyDivisions", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"radius\":\"radius\",\"distanceUnit\":\"distanceUnit\",\"countryIds\":\"countryIds\",\"excludedCountryIds\":\"excludedCountryIds\",\"minPopulation\":\"minPopulation\",\"maxPopulation\":\"maxPopulation\",\"namePrefix\":\"namePrefix\",\"namePrefixDefaultLangResults\":\"namePrefixDefaultLangResults\",\"timeZoneIds\":\"timeZoneIds\",\"asciiMode\":\"asciiMode\",\"hateoasMode\":\"hateoasMode\",\"languageCode\":\"languageCode\",\"limit\":\"limit\",\"offset\":\"offset\",\"sort\":\"sort\",\"includeDeleted\":\"includeDeleted\"}")
-  "Find places near the given city, filtering by optional criteria. If no criteria are set, you will get\nback all places within the default radius.\n"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/cities/{args.cityId}/nearbyPlaces`\nFind places near the given city, filtering by optional criteria. If no criteria are set, you will get\nback all places within the default radius.\n\n"
   findPlacesNearCityUsingGET(
     "A city id (either native 'id' or 'wikiDataId')"
     cityId: String!
@@ -328,7 +328,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "Whether to include any divisions marked deleted: ALL | SINCE_YESTERDAY | SINCE_LAST_WEEK | NONE"
     includeDeleted: String = "NONE"
   ): findPlacesNearCityUsingGET_response @httpOperation(path: "/geo/cities/{args.cityId}/nearbyPlaces", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"radius\":\"radius\",\"distanceUnit\":\"distanceUnit\",\"countryIds\":\"countryIds\",\"excludedCountryIds\":\"excludedCountryIds\",\"minPopulation\":\"minPopulation\",\"maxPopulation\":\"maxPopulation\",\"namePrefix\":\"namePrefix\",\"namePrefixDefaultLangResults\":\"namePrefixDefaultLangResults\",\"timeZoneIds\":\"timeZoneIds\",\"types\":\"types\",\"asciiMode\":\"asciiMode\",\"hateoasMode\":\"hateoasMode\",\"languageCode\":\"languageCode\",\"limit\":\"limit\",\"offset\":\"offset\",\"sort\":\"sort\",\"includeDeleted\":\"includeDeleted\"}")
-  "Get city details such as location coordinates, population, and elevation above sea-level\n(if available).\n"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/cities/{args.cityId}`\nGet city details such as location coordinates, population, and elevation above sea-level\n(if available).\n\n"
   getCityUsingGET(
     "A city id (either native 'id' or 'wikiDataId')"
     cityId: String!
@@ -337,7 +337,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "Display results in this language"
     languageCode: String
   ): getCityUsingGET_response @httpOperation(path: "/geo/cities/{args.cityId}", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"asciiMode\":\"asciiMode\",\"languageCode\":\"languageCode\"}")
-  "Get distance from the given city"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/cities/{args.cityId}/distance`\nGet distance from the given city\n"
   getCityDistanceUsingGET(
     "A city id (either native 'id' or 'wikiDataId')"
     cityId: String!
@@ -346,12 +346,12 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "The unit of distance: MI | KM"
     distanceUnit: String = "MI"
   ): getCityDistanceUsingGET_response @httpOperation(path: "/geo/cities/{args.cityId}/distance", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"toCityId\":\"toCityId\",\"distanceUnit\":\"distanceUnit\"}")
-  "Get city date-time"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/cities/{args.cityId}/dateTime`\nGet city date-time\n"
   getCityDateTimeUsingGET(
     "A city id (either native 'id' or 'wikiDataId')"
     cityId: String!
   ): getCityDateTimeUsingGET_response @httpOperation(path: "/geo/cities/{args.cityId}/dateTime", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET)
-  "Get the details for the containing populated place (e.g., its county or other administrative division), including location coordinates, population, and elevation above sea-level\n(if available).\n"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/cities/{args.cityId}/locatedIn`\nGet the details for the containing populated place (e.g., its county or other administrative division), including location coordinates, population, and elevation above sea-level\n(if available).\n\n"
   getCityLocatedInUsingGET(
     "A city id (either native 'id' or 'wikiDataId')"
     cityId: String!
@@ -360,12 +360,12 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "Display results in this language"
     languageCode: String
   ): getCityLocatedInUsingGET_response @httpOperation(path: "/geo/cities/{args.cityId}/locatedIn", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"asciiMode\":\"asciiMode\",\"languageCode\":\"languageCode\"}")
-  "Get city time"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/cities/{args.cityId}/time`\nGet city time\n"
   getCityTimeUsingGET(
     "A city id (either native 'id' or 'wikiDataId')"
     cityId: String!
   ): getCityTimeUsingGET_response @httpOperation(path: "/geo/cities/{args.cityId}/time", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET)
-  "Find countries, filtering by optional criteria. If no criteria are set, you will get back all known countries.\n"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/countries`\nFind countries, filtering by optional criteria. If no criteria are set, you will get back all known countries.\n\n"
   getCountriesUsingGET(
     "Only countries supporting this currency"
     currencyCode: String
@@ -386,7 +386,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "How to sort countries. \nFormat: ±SORT_FIELD \nwhere SORT_FIELD = code | name"
     sort: String
   ): getCountriesUsingGET_response @httpOperation(path: "/geo/countries", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"currencyCode\":\"currencyCode\",\"namePrefix\":\"namePrefix\",\"namePrefixDefaultLangResults\":\"namePrefixDefaultLangResults\",\"asciiMode\":\"asciiMode\",\"hateoasMode\":\"hateoasMode\",\"languageCode\":\"languageCode\",\"limit\":\"limit\",\"offset\":\"offset\",\"sort\":\"sort\"}")
-  "Get country details such as number of regions."
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/countries/{args.countryId}`\nGet country details such as number of regions.\n"
   getCountryUsingGET(
     "An ISO-3166 country code or WikiData id"
     countryId: String!
@@ -395,7 +395,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "Display results in this language"
     languageCode: String
   ): getCountryUsingGET_response @httpOperation(path: "/geo/countries/{args.countryId}", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"asciiMode\":\"asciiMode\",\"languageCode\":\"languageCode\"}")
-  "Get the country's places. The country is omitted in the response.\n"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/countries/{args.countryId}/places`\nGet the country's places. The country is omitted in the response.\n\n"
   findCountryPlacesUsingGET(
     "An ISO-3166 country code or WikiData id"
     countryId: String!
@@ -426,7 +426,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "Whether to include any divisions marked deleted: ALL | SINCE_YESTERDAY | SINCE_LAST_WEEK | NONE"
     includeDeleted: String = "NONE"
   ): findCountryPlacesUsingGET_response @httpOperation(path: "/geo/countries/{args.countryId}/places", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"minPopulation\":\"minPopulation\",\"maxPopulation\":\"maxPopulation\",\"namePrefix\":\"namePrefix\",\"namePrefixDefaultLangResults\":\"namePrefixDefaultLangResults\",\"timeZoneIds\":\"timeZoneIds\",\"types\":\"types\",\"asciiMode\":\"asciiMode\",\"hateoasMode\":\"hateoasMode\",\"languageCode\":\"languageCode\",\"limit\":\"limit\",\"offset\":\"offset\",\"sort\":\"sort\",\"includeDeleted\":\"includeDeleted\"}")
-  "Get the country's regions. These could be states, provinces, districts, or otherwise major\npolitical divisions.\n"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/countries/{args.countryId}/regions`\nGet the country's regions. These could be states, provinces, districts, or otherwise major\npolitical divisions.\n\n"
   getRegionsUsingGET(
     "An ISO-3166 country code or WikiData id"
     countryId: String!
@@ -447,7 +447,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "How to sort regions. \nFormat: ±SORT_FIELD \nwhere SORT_FIELD = fipsCode | isoCode | name"
     sort: String
   ): getRegionsUsingGET_response @httpOperation(path: "/geo/countries/{args.countryId}/regions", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"namePrefix\":\"namePrefix\",\"namePrefixDefaultLangResults\":\"namePrefixDefaultLangResults\",\"asciiMode\":\"asciiMode\",\"hateoasMode\":\"hateoasMode\",\"languageCode\":\"languageCode\",\"limit\":\"limit\",\"offset\":\"offset\",\"sort\":\"sort\"}")
-  "Get country region details such as number of cities."
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/countries/{args.countryId}/regions/{args.regionCode}`\nGet country region details such as number of cities.\n"
   getRegionUsingGET(
     "An ISO-3166 country code or WikiData id"
     countryId: String!
@@ -458,7 +458,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "Display results in this language"
     languageCode: String
   ): getRegionUsingGET_response @httpOperation(path: "/geo/countries/{args.countryId}/regions/{args.regionCode}", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"asciiMode\":\"asciiMode\",\"languageCode\":\"languageCode\"}")
-  "Get country region administrative divisions. The country and region info is omitted in the\nresponse.\n"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/countries/{args.countryId}/regions/{args.regionCode}/adminDivisions`\nGet country region administrative divisions. The country and region info is omitted in the\nresponse.\n\n"
   findRegionDivisionsUsingGET(
     "An ISO-3166 country code or WikiData id"
     countryId: String!
@@ -489,7 +489,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "Whether to include any divisions marked deleted: ALL | SINCE_YESTERDAY | SINCE_LAST_WEEK | NONE"
     includeDeleted: String = "NONE"
   ): findRegionDivisionsUsingGET_response @httpOperation(path: "/geo/countries/{args.countryId}/regions/{args.regionCode}/adminDivisions", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"minPopulation\":\"minPopulation\",\"maxPopulation\":\"maxPopulation\",\"namePrefix\":\"namePrefix\",\"namePrefixDefaultLangResults\":\"namePrefixDefaultLangResults\",\"timeZoneIds\":\"timeZoneIds\",\"asciiMode\":\"asciiMode\",\"hateoasMode\":\"hateoasMode\",\"languageCode\":\"languageCode\",\"limit\":\"limit\",\"offset\":\"offset\",\"sort\":\"sort\",\"includeDeleted\":\"includeDeleted\"}")
-  "Get country region cities. The country and region info is omitted in the response.\n"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/countries/{args.countryId}/regions/{args.regionCode}/cities`\nGet country region cities. The country and region info is omitted in the response.\n\n"
   findRegionCitiesUsingGET(
     "An ISO-3166 country code or WikiData id"
     countryId: String!
@@ -522,7 +522,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "Whether to include any divisions marked deleted: ALL | SINCE_YESTERDAY | SINCE_LAST_WEEK | NONE"
     includeDeleted: String = "NONE"
   ): findRegionCitiesUsingGET_response @httpOperation(path: "/geo/countries/{args.countryId}/regions/{args.regionCode}/cities", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"minPopulation\":\"minPopulation\",\"maxPopulation\":\"maxPopulation\",\"namePrefix\":\"namePrefix\",\"namePrefixDefaultLangResults\":\"namePrefixDefaultLangResults\",\"timeZoneIds\":\"timeZoneIds\",\"types\":\"types\",\"asciiMode\":\"asciiMode\",\"hateoasMode\":\"hateoasMode\",\"languageCode\":\"languageCode\",\"limit\":\"limit\",\"offset\":\"offset\",\"sort\":\"sort\",\"includeDeleted\":\"includeDeleted\"}")
-  "Get country region places. The country and region info is omitted in the response.\n"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/countries/{args.countryId}/regions/{args.regionCode}/places`\nGet country region places. The country and region info is omitted in the response.\n\n"
   findRegionPlacesUsingGET(
     "An ISO-3166 country code or WikiData id"
     countryId: String!
@@ -555,7 +555,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "Whether to include any divisions marked deleted: ALL | SINCE_YESTERDAY | SINCE_LAST_WEEK | NONE"
     includeDeleted: String = "NONE"
   ): findRegionPlacesUsingGET_response @httpOperation(path: "/geo/countries/{args.countryId}/regions/{args.regionCode}/places", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"minPopulation\":\"minPopulation\",\"maxPopulation\":\"maxPopulation\",\"namePrefix\":\"namePrefix\",\"namePrefixDefaultLangResults\":\"namePrefixDefaultLangResults\",\"timeZoneIds\":\"timeZoneIds\",\"types\":\"types\",\"asciiMode\":\"asciiMode\",\"hateoasMode\":\"hateoasMode\",\"languageCode\":\"languageCode\",\"limit\":\"limit\",\"offset\":\"offset\",\"sort\":\"sort\",\"includeDeleted\":\"includeDeleted\"}")
-  "Find cities near the given location, filtering by optional criteria. If no criteria are set, you will get back\nall cities within the default radius.\n"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/locations/{args.locationId}/nearbyCities`\nFind cities near the given location, filtering by optional criteria. If no criteria are set, you will get back\nall cities within the default radius.\n\n"
   findCitiesNearLocationUsingGET(
     "A latitude/longitude in ISO-6709 format: ±DD.DDDD±DDD.DDDD"
     locationId: String!
@@ -594,7 +594,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "Whether to include any divisions marked deleted: ALL | SINCE_YESTERDAY | SINCE_LAST_WEEK | NONE"
     includeDeleted: String = "NONE"
   ): findCitiesNearLocationUsingGET_response @httpOperation(path: "/geo/locations/{args.locationId}/nearbyCities", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"radius\":\"radius\",\"distanceUnit\":\"distanceUnit\",\"countryIds\":\"countryIds\",\"excludedCountryIds\":\"excludedCountryIds\",\"minPopulation\":\"minPopulation\",\"maxPopulation\":\"maxPopulation\",\"namePrefix\":\"namePrefix\",\"namePrefixDefaultLangResults\":\"namePrefixDefaultLangResults\",\"timeZoneIds\":\"timeZoneIds\",\"types\":\"types\",\"asciiMode\":\"asciiMode\",\"hateoasMode\":\"hateoasMode\",\"languageCode\":\"languageCode\",\"limit\":\"limit\",\"offset\":\"offset\",\"sort\":\"sort\",\"includeDeleted\":\"includeDeleted\"}")
-  "Find administrative divisions near the given location, filtering by optional criteria. If no criteria are set,\nyou will get back all divisions within the default radius.\n"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/locations/{args.locationId}/nearbyDivisions`\nFind administrative divisions near the given location, filtering by optional criteria. If no criteria are set,\nyou will get back all divisions within the default radius.\n\n"
   findDivisionsNearLocationUsingGET(
     "A latitude/longitude in ISO-6709 format: ±DD.DDDD±DDD.DDDD"
     locationId: String!
@@ -631,7 +631,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "Whether to include any divisions marked deleted: ALL | SINCE_YESTERDAY | SINCE_LAST_WEEK | NONE"
     includeDeleted: String = "NONE"
   ): findDivisionsNearLocationUsingGET_response @httpOperation(path: "/geo/locations/{args.locationId}/nearbyDivisions", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"radius\":\"radius\",\"distanceUnit\":\"distanceUnit\",\"countryIds\":\"countryIds\",\"excludedCountryIds\":\"excludedCountryIds\",\"minPopulation\":\"minPopulation\",\"maxPopulation\":\"maxPopulation\",\"namePrefix\":\"namePrefix\",\"namePrefixDefaultLangResults\":\"namePrefixDefaultLangResults\",\"timeZoneIds\":\"timeZoneIds\",\"asciiMode\":\"asciiMode\",\"hateoasMode\":\"hateoasMode\",\"languageCode\":\"languageCode\",\"limit\":\"limit\",\"offset\":\"offset\",\"sort\":\"sort\",\"includeDeleted\":\"includeDeleted\"}")
-  "Find places near the given location, filtering by optional criteria. If no criteria are set, you will get back\nall places within the default radius.\n"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/locations/{args.locationId}/nearbyPlaces`\nFind places near the given location, filtering by optional criteria. If no criteria are set, you will get back\nall places within the default radius.\n\n"
   findPlacesNearLocationUsingGET(
     "A latitude/longitude in ISO-6709 format: ±DD.DDDD±DDD.DDDD"
     locationId: String!
@@ -670,7 +670,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "Whether to include any divisions marked deleted: ALL | SINCE_YESTERDAY | SINCE_LAST_WEEK | NONE"
     includeDeleted: String = "NONE"
   ): findPlacesNearLocationUsingGET_response @httpOperation(path: "/geo/locations/{args.locationId}/nearbyPlaces", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"radius\":\"radius\",\"distanceUnit\":\"distanceUnit\",\"countryIds\":\"countryIds\",\"excludedCountryIds\":\"excludedCountryIds\",\"minPopulation\":\"minPopulation\",\"maxPopulation\":\"maxPopulation\",\"namePrefix\":\"namePrefix\",\"namePrefixDefaultLangResults\":\"namePrefixDefaultLangResults\",\"timeZoneIds\":\"timeZoneIds\",\"types\":\"types\",\"asciiMode\":\"asciiMode\",\"hateoasMode\":\"hateoasMode\",\"languageCode\":\"languageCode\",\"limit\":\"limit\",\"offset\":\"offset\",\"sort\":\"sort\",\"includeDeleted\":\"includeDeleted\"}")
-  "Find places, filtering by optional criteria. If no criteria are set, you will get back all known places.\n"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/places`\nFind places, filtering by optional criteria. If no criteria are set, you will get back all known places.\n\n"
   findPlacesUsingGET(
     "Only places near this location. Latitude/longitude in ISO-6709 format: ±DD.DDDD±DDD.DDDD"
     location: String
@@ -709,7 +709,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "Whether to include any divisions marked deleted: ALL | SINCE_YESTERDAY | SINCE_LAST_WEEK | NONE"
     includeDeleted: String = "NONE"
   ): findPlacesUsingGET_response @httpOperation(path: "/geo/places", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"location\":\"location\",\"radius\":\"radius\",\"distanceUnit\":\"distanceUnit\",\"countryIds\":\"countryIds\",\"excludedCountryIds\":\"excludedCountryIds\",\"minPopulation\":\"minPopulation\",\"maxPopulation\":\"maxPopulation\",\"namePrefix\":\"namePrefix\",\"namePrefixDefaultLangResults\":\"namePrefixDefaultLangResults\",\"timeZoneIds\":\"timeZoneIds\",\"types\":\"types\",\"asciiMode\":\"asciiMode\",\"hateoasMode\":\"hateoasMode\",\"languageCode\":\"languageCode\",\"limit\":\"limit\",\"offset\":\"offset\",\"sort\":\"sort\",\"includeDeleted\":\"includeDeleted\"}")
-  "Find places near the given place, filtering by optional criteria. If no criteria are set, you will get\nback all places within the default radius.\n"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/places/{args.placeId}/nearbyPlaces`\nFind places near the given place, filtering by optional criteria. If no criteria are set, you will get\nback all places within the default radius.\n\n"
   findPlacesNearPlaceUsingGET(
     "A place id (either native 'id' or 'wikiDataId')"
     placeId: String!
@@ -748,7 +748,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "Whether to include any divisions marked deleted: ALL | SINCE_YESTERDAY | SINCE_LAST_WEEK | NONE"
     includeDeleted: String = "NONE"
   ): findPlacesNearPlaceUsingGET_response @httpOperation(path: "/geo/places/{args.placeId}/nearbyPlaces", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"radius\":\"radius\",\"distanceUnit\":\"distanceUnit\",\"countryIds\":\"countryIds\",\"excludedCountryIds\":\"excludedCountryIds\",\"minPopulation\":\"minPopulation\",\"maxPopulation\":\"maxPopulation\",\"namePrefix\":\"namePrefix\",\"namePrefixDefaultLangResults\":\"namePrefixDefaultLangResults\",\"timeZoneIds\":\"timeZoneIds\",\"types\":\"types\",\"asciiMode\":\"asciiMode\",\"hateoasMode\":\"hateoasMode\",\"languageCode\":\"languageCode\",\"limit\":\"limit\",\"offset\":\"offset\",\"sort\":\"sort\",\"includeDeleted\":\"includeDeleted\"}")
-  "Get place details such as location coordinates, population, and elevation above sea-level\n(if available).\n"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/places/{args.placeId}`\nGet place details such as location coordinates, population, and elevation above sea-level\n(if available).\n\n"
   getPlaceUsingGET(
     "A place id (either native 'id' or 'wikiDataId')"
     placeId: String!
@@ -757,7 +757,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "Display results in this language"
     languageCode: String
   ): getPlaceUsingGET_response @httpOperation(path: "/geo/places/{args.placeId}", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"asciiMode\":\"asciiMode\",\"languageCode\":\"languageCode\"}")
-  "Get distance from the given place"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/places/{args.placeId}/distance`\nGet distance from the given place\n"
   getPlaceDistanceUsingGET(
     "A place id (either native 'id' or 'wikiDataId')"
     placeId: String!
@@ -766,12 +766,12 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "The unit of distance: MI | KM"
     distanceUnit: String = "MI"
   ): getPlaceDistanceUsingGET_response @httpOperation(path: "/geo/places/{args.placeId}/distance", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"toPlaceId\":\"toPlaceId\",\"distanceUnit\":\"distanceUnit\"}")
-  "Get place date-time"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/places/{args.placeId}/dateTime`\nGet place date-time\n"
   getPlaceDateTimeUsingGET(
     "A place id (either native 'id' or 'wikiDataId')"
     placeId: String!
   ): getPlaceDateTimeUsingGET_response @httpOperation(path: "/geo/places/{args.placeId}/dateTime", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET)
-  "Get the details for the containing populated place (e.g., its county or other administrative division), including location coordinates, population, and elevation above sea-level\n(if available).\n"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/places/{args.placeId}/locatedIn`\nGet the details for the containing populated place (e.g., its county or other administrative division), including location coordinates, population, and elevation above sea-level\n(if available).\n\n"
   getPlaceLocatedInUsingGET(
     "A place id (either native 'id' or 'wikiDataId')"
     placeId: String!
@@ -780,12 +780,12 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "Display results in this language"
     languageCode: String
   ): getPlaceLocatedInUsingGET_response @httpOperation(path: "/geo/places/{args.placeId}/locatedIn", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"asciiMode\":\"asciiMode\",\"languageCode\":\"languageCode\"}")
-  "Get place time"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/geo/places/{args.placeId}/time`\nGet place time\n"
   getPlaceTimeUsingGET(
     "A place id (either native 'id' or 'wikiDataId')"
     placeId: String!
   ): getPlaceTimeUsingGET_response @httpOperation(path: "/geo/places/{args.placeId}/time", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET)
-  "Find currencies, filtering by optional criteria. If no criteria are set, you will get back all known currencies."
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/locale/currencies`\nFind currencies, filtering by optional criteria. If no criteria are set, you will get back all known currencies.\n"
   getCurrenciesUsingGET(
     "Currencies for this country id"
     countryId: String!
@@ -796,7 +796,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "The zero-ary offset index into the results"
     offset: Int
   ): getCurrenciesUsingGET_response @httpOperation(path: "/locale/currencies", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"countryId\":\"countryId\",\"hateoasMode\":\"hateoasMode\",\"limit\":\"limit\",\"offset\":\"offset\"}")
-  "Get all supported languages"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/locale/languages`\nGet all supported languages\n"
   getLanguagesUsingGET(
     "Include HATEOAS-style links in results"
     hateoasMode: Boolean = true
@@ -805,7 +805,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "The zero-ary offset index into the results"
     offset: Int
   ): getLanguagesUsingGET_response @httpOperation(path: "/locale/languages", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"hateoasMode\":\"hateoasMode\",\"limit\":\"limit\",\"offset\":\"offset\"}")
-  "Get all known locales"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/locale/locales`\nGet all known locales\n"
   getLocalesUsingGET(
     "Include HATEOAS-style links in results"
     hateoasMode: Boolean = true
@@ -814,7 +814,7 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "The zero-ary offset index into the results"
     offset: Int
   ): getLocalesUsingGET_response @httpOperation(path: "/locale/locales", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"hateoasMode\":\"hateoasMode\",\"limit\":\"limit\",\"offset\":\"offset\"}")
-  "Get all known time-zones"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/locale/timezones`\nGet all known time-zones\n"
   getTimezonesUsingGET(
     "Include HATEOAS-style links in results"
     hateoasMode: Boolean = true
@@ -823,17 +823,17 @@ type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-serv
     "The zero-ary offset index into the results"
     offset: Int
   ): getTimezonesUsingGET_response @httpOperation(path: "/locale/timezones", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET, queryParamArgMap: "{\"hateoasMode\":\"hateoasMode\",\"limit\":\"limit\",\"offset\":\"offset\"}")
-  "Get time-zone"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/locale/timezones/{args.zoneId}`\nGet time-zone\n"
   getTimeZoneUsingGET(
     "A time-zone id"
     zoneId: String!
   ): getTimeZoneUsingGET_response @httpOperation(path: "/locale/timezones/{args.zoneId}", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET)
-  "Get time-zone date-time"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/locale/timezones/{args.zoneId}/dateTime`\nGet time-zone date-time\n"
   getTimeZoneDateTimeUsingGET(
     "A time-zone id"
     zoneId: String!
   ): getTimeZoneDateTimeUsingGET_response @httpOperation(path: "/locale/timezones/{args.zoneId}/dateTime", operationSpecificHeaders: "{\"Content-Type\":\"application/json\",\"Accept\":\"application/json\"}", httpMethod: GET)
-  "Get time-zone time"
+  "\n>**Method**: `GET`\n>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`\n>**Path**: `/locale/timezones/{args.zoneId}/time`\nGet time-zone time\n"
   getTimeZoneTimeUsingGET(
     "A time-zone id"
     zoneId: String!

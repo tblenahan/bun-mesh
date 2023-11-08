@@ -31,172 +31,397 @@ export type Scalars = {
 
 export type Query = {
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/adminDivisions`
    * Find administrative divisions, filtering by optional criteria. If no criteria are set, you will get back all
    * known divisions.
+   *
    *
    */
   findAdminDivisionsUsingGET?: Maybe<findAdminDivisionsUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/adminDivisions/{args.divisionId}`
    * Get administrative division details such as location coordinates, population, and
    * elevation above sea-level (if available).
+   *
    *
    */
   getAdminDivisionUsingGET?: Maybe<getAdminDivisionUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/adminDivisions/{args.divisionId}/nearbyCities`
    * Find cities near the given administrative division, filtering by optional criteria. If no criteria are set, you
    * will get back all known cities.
+   *
    *
    */
   findCitiesNearAdminDivisionUsingGET?: Maybe<findCitiesNearAdminDivisionUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/adminDivisions/{args.divisionId}/nearbyDivisions`
    * Find administrative divisions near the given division, filtering by optional criteria. If no criteria
    * are set, you will get back all known divisions.
+   *
    *
    */
   findDivisionsNearAdminDivisionUsingGET?: Maybe<findDivisionsNearAdminDivisionUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/adminDivisions/{args.divisionId}/nearbyPlaces`
    * Find places near the given administrative division, filtering by optional criteria. If no criteria are set, you
    * will get back all known places.
+   *
    *
    */
   findPlacesNearAdminDivisionUsingGET?: Maybe<findPlacesNearAdminDivisionUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/cities`
    * Find cities, filtering by optional criteria. If no criteria are set, you will get back all known cities.
+   *
    *
    */
   findCitiesUsingGET?: Maybe<findCitiesUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/cities/{args.cityId}/nearbyCities`
    * Find cities near the given city, filtering by optional criteria. If no criteria are set, you will get
    * back all cities within the default radius.
+   *
    *
    */
   findCitiesNearCityUsingGET?: Maybe<findCitiesNearCityUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/cities/{args.cityId}/nearbyDivisions`
    * Find administrative divisions near the given city, filtering by optional criteria. If no criteria are set, you will get
    * back all divisions within the default radius.
+   *
    *
    */
   findDivisionsNearCityUsingGET?: Maybe<findDivisionsNearCityUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/cities/{args.cityId}/nearbyPlaces`
    * Find places near the given city, filtering by optional criteria. If no criteria are set, you will get
    * back all places within the default radius.
+   *
    *
    */
   findPlacesNearCityUsingGET?: Maybe<findPlacesNearCityUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/cities/{args.cityId}`
    * Get city details such as location coordinates, population, and elevation above sea-level
    * (if available).
    *
+   *
    */
   getCityUsingGET?: Maybe<getCityUsingGET_response>;
-  /** Get distance from the given city */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/cities/{args.cityId}/distance`
+   * Get distance from the given city
+   *
+   */
   getCityDistanceUsingGET?: Maybe<getCityDistanceUsingGET_response>;
-  /** Get city date-time */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/cities/{args.cityId}/dateTime`
+   * Get city date-time
+   *
+   */
   getCityDateTimeUsingGET?: Maybe<getCityDateTimeUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/cities/{args.cityId}/locatedIn`
    * Get the details for the containing populated place (e.g., its county or other administrative division), including location coordinates, population, and elevation above sea-level
    * (if available).
    *
+   *
    */
   getCityLocatedInUsingGET?: Maybe<getCityLocatedInUsingGET_response>;
-  /** Get city time */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/cities/{args.cityId}/time`
+   * Get city time
+   *
+   */
   getCityTimeUsingGET?: Maybe<getCityTimeUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/countries`
    * Find countries, filtering by optional criteria. If no criteria are set, you will get back all known countries.
+   *
    *
    */
   getCountriesUsingGET?: Maybe<getCountriesUsingGET_response>;
-  /** Get country details such as number of regions. */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/countries/{args.countryId}`
+   * Get country details such as number of regions.
+   *
+   */
   getCountryUsingGET?: Maybe<getCountryUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/countries/{args.countryId}/places`
    * Get the country's places. The country is omitted in the response.
+   *
    *
    */
   findCountryPlacesUsingGET?: Maybe<findCountryPlacesUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/countries/{args.countryId}/regions`
    * Get the country's regions. These could be states, provinces, districts, or otherwise major
    * political divisions.
    *
+   *
    */
   getRegionsUsingGET?: Maybe<getRegionsUsingGET_response>;
-  /** Get country region details such as number of cities. */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/countries/{args.countryId}/regions/{args.regionCode}`
+   * Get country region details such as number of cities.
+   *
+   */
   getRegionUsingGET?: Maybe<getRegionUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/countries/{args.countryId}/regions/{args.regionCode}/adminDivisions`
    * Get country region administrative divisions. The country and region info is omitted in the
    * response.
+   *
    *
    */
   findRegionDivisionsUsingGET?: Maybe<findRegionDivisionsUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/countries/{args.countryId}/regions/{args.regionCode}/cities`
    * Get country region cities. The country and region info is omitted in the response.
+   *
    *
    */
   findRegionCitiesUsingGET?: Maybe<findRegionCitiesUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/countries/{args.countryId}/regions/{args.regionCode}/places`
    * Get country region places. The country and region info is omitted in the response.
+   *
    *
    */
   findRegionPlacesUsingGET?: Maybe<findRegionPlacesUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/locations/{args.locationId}/nearbyCities`
    * Find cities near the given location, filtering by optional criteria. If no criteria are set, you will get back
    * all cities within the default radius.
+   *
    *
    */
   findCitiesNearLocationUsingGET?: Maybe<findCitiesNearLocationUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/locations/{args.locationId}/nearbyDivisions`
    * Find administrative divisions near the given location, filtering by optional criteria. If no criteria are set,
    * you will get back all divisions within the default radius.
+   *
    *
    */
   findDivisionsNearLocationUsingGET?: Maybe<findDivisionsNearLocationUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/locations/{args.locationId}/nearbyPlaces`
    * Find places near the given location, filtering by optional criteria. If no criteria are set, you will get back
    * all places within the default radius.
+   *
    *
    */
   findPlacesNearLocationUsingGET?: Maybe<findPlacesNearLocationUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/places`
    * Find places, filtering by optional criteria. If no criteria are set, you will get back all known places.
+   *
    *
    */
   findPlacesUsingGET?: Maybe<findPlacesUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/places/{args.placeId}/nearbyPlaces`
    * Find places near the given place, filtering by optional criteria. If no criteria are set, you will get
    * back all places within the default radius.
+   *
    *
    */
   findPlacesNearPlaceUsingGET?: Maybe<findPlacesNearPlaceUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/places/{args.placeId}`
    * Get place details such as location coordinates, population, and elevation above sea-level
    * (if available).
    *
+   *
    */
   getPlaceUsingGET?: Maybe<getPlaceUsingGET_response>;
-  /** Get distance from the given place */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/places/{args.placeId}/distance`
+   * Get distance from the given place
+   *
+   */
   getPlaceDistanceUsingGET?: Maybe<getPlaceDistanceUsingGET_response>;
-  /** Get place date-time */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/places/{args.placeId}/dateTime`
+   * Get place date-time
+   *
+   */
   getPlaceDateTimeUsingGET?: Maybe<getPlaceDateTimeUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/places/{args.placeId}/locatedIn`
    * Get the details for the containing populated place (e.g., its county or other administrative division), including location coordinates, population, and elevation above sea-level
    * (if available).
    *
+   *
    */
   getPlaceLocatedInUsingGET?: Maybe<getPlaceLocatedInUsingGET_response>;
-  /** Get place time */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/places/{args.placeId}/time`
+   * Get place time
+   *
+   */
   getPlaceTimeUsingGET?: Maybe<getPlaceTimeUsingGET_response>;
-  /** Find currencies, filtering by optional criteria. If no criteria are set, you will get back all known currencies. */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/locale/currencies`
+   * Find currencies, filtering by optional criteria. If no criteria are set, you will get back all known currencies.
+   *
+   */
   getCurrenciesUsingGET?: Maybe<getCurrenciesUsingGET_response>;
-  /** Get all supported languages */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/locale/languages`
+   * Get all supported languages
+   *
+   */
   getLanguagesUsingGET?: Maybe<getLanguagesUsingGET_response>;
-  /** Get all known locales */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/locale/locales`
+   * Get all known locales
+   *
+   */
   getLocalesUsingGET?: Maybe<getLocalesUsingGET_response>;
-  /** Get all known time-zones */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/locale/timezones`
+   * Get all known time-zones
+   *
+   */
   getTimezonesUsingGET?: Maybe<getTimezonesUsingGET_response>;
-  /** Get time-zone */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/locale/timezones/{args.zoneId}`
+   * Get time-zone
+   *
+   */
   getTimeZoneUsingGET?: Maybe<getTimeZoneUsingGET_response>;
-  /** Get time-zone date-time */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/locale/timezones/{args.zoneId}/dateTime`
+   * Get time-zone date-time
+   *
+   */
   getTimeZoneDateTimeUsingGET?: Maybe<getTimeZoneDateTimeUsingGET_response>;
-  /** Get time-zone time */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/locale/timezones/{args.zoneId}/time`
+   * Get time-zone time
+   *
+   */
   getTimeZoneTimeUsingGET?: Maybe<getTimeZoneTimeUsingGET_response>;
 };
 
@@ -1310,125 +1535,320 @@ export type HTTPMethod =
   | 'PATCH';
 
   export type QuerySdk = {
-      /** Find administrative divisions, filtering by optional criteria. If no criteria are set, you will get back all
+      /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/adminDivisions`
+Find administrative divisions, filtering by optional criteria. If no criteria are set, you will get back all
 known divisions.
+
  **/
   findAdminDivisionsUsingGET: InContextSdkMethod<Query['findAdminDivisionsUsingGET'], QueryfindAdminDivisionsUsingGETArgs, MeshContext>,
-  /** Get administrative division details such as location coordinates, population, and
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/adminDivisions/{args.divisionId}`
+Get administrative division details such as location coordinates, population, and
 elevation above sea-level (if available).
+
  **/
   getAdminDivisionUsingGET: InContextSdkMethod<Query['getAdminDivisionUsingGET'], QuerygetAdminDivisionUsingGETArgs, MeshContext>,
-  /** Find cities near the given administrative division, filtering by optional criteria. If no criteria are set, you
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/adminDivisions/{args.divisionId}/nearbyCities`
+Find cities near the given administrative division, filtering by optional criteria. If no criteria are set, you
 will get back all known cities.
+
  **/
   findCitiesNearAdminDivisionUsingGET: InContextSdkMethod<Query['findCitiesNearAdminDivisionUsingGET'], QueryfindCitiesNearAdminDivisionUsingGETArgs, MeshContext>,
-  /** Find administrative divisions near the given division, filtering by optional criteria. If no criteria
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/adminDivisions/{args.divisionId}/nearbyDivisions`
+Find administrative divisions near the given division, filtering by optional criteria. If no criteria
 are set, you will get back all known divisions.
+
  **/
   findDivisionsNearAdminDivisionUsingGET: InContextSdkMethod<Query['findDivisionsNearAdminDivisionUsingGET'], QueryfindDivisionsNearAdminDivisionUsingGETArgs, MeshContext>,
-  /** Find places near the given administrative division, filtering by optional criteria. If no criteria are set, you
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/adminDivisions/{args.divisionId}/nearbyPlaces`
+Find places near the given administrative division, filtering by optional criteria. If no criteria are set, you
 will get back all known places.
+
  **/
   findPlacesNearAdminDivisionUsingGET: InContextSdkMethod<Query['findPlacesNearAdminDivisionUsingGET'], QueryfindPlacesNearAdminDivisionUsingGETArgs, MeshContext>,
-  /** Find cities, filtering by optional criteria. If no criteria are set, you will get back all known cities.
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/cities`
+Find cities, filtering by optional criteria. If no criteria are set, you will get back all known cities.
+
  **/
   findCitiesUsingGET: InContextSdkMethod<Query['findCitiesUsingGET'], QueryfindCitiesUsingGETArgs, MeshContext>,
-  /** Find cities near the given city, filtering by optional criteria. If no criteria are set, you will get
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/cities/{args.cityId}/nearbyCities`
+Find cities near the given city, filtering by optional criteria. If no criteria are set, you will get
 back all cities within the default radius.
+
  **/
   findCitiesNearCityUsingGET: InContextSdkMethod<Query['findCitiesNearCityUsingGET'], QueryfindCitiesNearCityUsingGETArgs, MeshContext>,
-  /** Find administrative divisions near the given city, filtering by optional criteria. If no criteria are set, you will get
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/cities/{args.cityId}/nearbyDivisions`
+Find administrative divisions near the given city, filtering by optional criteria. If no criteria are set, you will get
 back all divisions within the default radius.
+
  **/
   findDivisionsNearCityUsingGET: InContextSdkMethod<Query['findDivisionsNearCityUsingGET'], QueryfindDivisionsNearCityUsingGETArgs, MeshContext>,
-  /** Find places near the given city, filtering by optional criteria. If no criteria are set, you will get
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/cities/{args.cityId}/nearbyPlaces`
+Find places near the given city, filtering by optional criteria. If no criteria are set, you will get
 back all places within the default radius.
+
  **/
   findPlacesNearCityUsingGET: InContextSdkMethod<Query['findPlacesNearCityUsingGET'], QueryfindPlacesNearCityUsingGETArgs, MeshContext>,
-  /** Get city details such as location coordinates, population, and elevation above sea-level
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/cities/{args.cityId}`
+Get city details such as location coordinates, population, and elevation above sea-level
 (if available).
+
  **/
   getCityUsingGET: InContextSdkMethod<Query['getCityUsingGET'], QuerygetCityUsingGETArgs, MeshContext>,
-  /** Get distance from the given city **/
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/cities/{args.cityId}/distance`
+Get distance from the given city
+ **/
   getCityDistanceUsingGET: InContextSdkMethod<Query['getCityDistanceUsingGET'], QuerygetCityDistanceUsingGETArgs, MeshContext>,
-  /** Get city date-time **/
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/cities/{args.cityId}/dateTime`
+Get city date-time
+ **/
   getCityDateTimeUsingGET: InContextSdkMethod<Query['getCityDateTimeUsingGET'], QuerygetCityDateTimeUsingGETArgs, MeshContext>,
-  /** Get the details for the containing populated place (e.g., its county or other administrative division), including location coordinates, population, and elevation above sea-level
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/cities/{args.cityId}/locatedIn`
+Get the details for the containing populated place (e.g., its county or other administrative division), including location coordinates, population, and elevation above sea-level
 (if available).
+
  **/
   getCityLocatedInUsingGET: InContextSdkMethod<Query['getCityLocatedInUsingGET'], QuerygetCityLocatedInUsingGETArgs, MeshContext>,
-  /** Get city time **/
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/cities/{args.cityId}/time`
+Get city time
+ **/
   getCityTimeUsingGET: InContextSdkMethod<Query['getCityTimeUsingGET'], QuerygetCityTimeUsingGETArgs, MeshContext>,
-  /** Find countries, filtering by optional criteria. If no criteria are set, you will get back all known countries.
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/countries`
+Find countries, filtering by optional criteria. If no criteria are set, you will get back all known countries.
+
  **/
   getCountriesUsingGET: InContextSdkMethod<Query['getCountriesUsingGET'], QuerygetCountriesUsingGETArgs, MeshContext>,
-  /** Get country details such as number of regions. **/
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/countries/{args.countryId}`
+Get country details such as number of regions.
+ **/
   getCountryUsingGET: InContextSdkMethod<Query['getCountryUsingGET'], QuerygetCountryUsingGETArgs, MeshContext>,
-  /** Get the country's places. The country is omitted in the response.
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/countries/{args.countryId}/places`
+Get the country's places. The country is omitted in the response.
+
  **/
   findCountryPlacesUsingGET: InContextSdkMethod<Query['findCountryPlacesUsingGET'], QueryfindCountryPlacesUsingGETArgs, MeshContext>,
-  /** Get the country's regions. These could be states, provinces, districts, or otherwise major
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/countries/{args.countryId}/regions`
+Get the country's regions. These could be states, provinces, districts, or otherwise major
 political divisions.
+
  **/
   getRegionsUsingGET: InContextSdkMethod<Query['getRegionsUsingGET'], QuerygetRegionsUsingGETArgs, MeshContext>,
-  /** Get country region details such as number of cities. **/
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/countries/{args.countryId}/regions/{args.regionCode}`
+Get country region details such as number of cities.
+ **/
   getRegionUsingGET: InContextSdkMethod<Query['getRegionUsingGET'], QuerygetRegionUsingGETArgs, MeshContext>,
-  /** Get country region administrative divisions. The country and region info is omitted in the
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/countries/{args.countryId}/regions/{args.regionCode}/adminDivisions`
+Get country region administrative divisions. The country and region info is omitted in the
 response.
+
  **/
   findRegionDivisionsUsingGET: InContextSdkMethod<Query['findRegionDivisionsUsingGET'], QueryfindRegionDivisionsUsingGETArgs, MeshContext>,
-  /** Get country region cities. The country and region info is omitted in the response.
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/countries/{args.countryId}/regions/{args.regionCode}/cities`
+Get country region cities. The country and region info is omitted in the response.
+
  **/
   findRegionCitiesUsingGET: InContextSdkMethod<Query['findRegionCitiesUsingGET'], QueryfindRegionCitiesUsingGETArgs, MeshContext>,
-  /** Get country region places. The country and region info is omitted in the response.
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/countries/{args.countryId}/regions/{args.regionCode}/places`
+Get country region places. The country and region info is omitted in the response.
+
  **/
   findRegionPlacesUsingGET: InContextSdkMethod<Query['findRegionPlacesUsingGET'], QueryfindRegionPlacesUsingGETArgs, MeshContext>,
-  /** Find cities near the given location, filtering by optional criteria. If no criteria are set, you will get back
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/locations/{args.locationId}/nearbyCities`
+Find cities near the given location, filtering by optional criteria. If no criteria are set, you will get back
 all cities within the default radius.
+
  **/
   findCitiesNearLocationUsingGET: InContextSdkMethod<Query['findCitiesNearLocationUsingGET'], QueryfindCitiesNearLocationUsingGETArgs, MeshContext>,
-  /** Find administrative divisions near the given location, filtering by optional criteria. If no criteria are set,
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/locations/{args.locationId}/nearbyDivisions`
+Find administrative divisions near the given location, filtering by optional criteria. If no criteria are set,
 you will get back all divisions within the default radius.
+
  **/
   findDivisionsNearLocationUsingGET: InContextSdkMethod<Query['findDivisionsNearLocationUsingGET'], QueryfindDivisionsNearLocationUsingGETArgs, MeshContext>,
-  /** Find places near the given location, filtering by optional criteria. If no criteria are set, you will get back
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/locations/{args.locationId}/nearbyPlaces`
+Find places near the given location, filtering by optional criteria. If no criteria are set, you will get back
 all places within the default radius.
+
  **/
   findPlacesNearLocationUsingGET: InContextSdkMethod<Query['findPlacesNearLocationUsingGET'], QueryfindPlacesNearLocationUsingGETArgs, MeshContext>,
-  /** Find places, filtering by optional criteria. If no criteria are set, you will get back all known places.
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/places`
+Find places, filtering by optional criteria. If no criteria are set, you will get back all known places.
+
  **/
   findPlacesUsingGET: InContextSdkMethod<Query['findPlacesUsingGET'], QueryfindPlacesUsingGETArgs, MeshContext>,
-  /** Find places near the given place, filtering by optional criteria. If no criteria are set, you will get
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/places/{args.placeId}/nearbyPlaces`
+Find places near the given place, filtering by optional criteria. If no criteria are set, you will get
 back all places within the default radius.
+
  **/
   findPlacesNearPlaceUsingGET: InContextSdkMethod<Query['findPlacesNearPlaceUsingGET'], QueryfindPlacesNearPlaceUsingGETArgs, MeshContext>,
-  /** Get place details such as location coordinates, population, and elevation above sea-level
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/places/{args.placeId}`
+Get place details such as location coordinates, population, and elevation above sea-level
 (if available).
+
  **/
   getPlaceUsingGET: InContextSdkMethod<Query['getPlaceUsingGET'], QuerygetPlaceUsingGETArgs, MeshContext>,
-  /** Get distance from the given place **/
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/places/{args.placeId}/distance`
+Get distance from the given place
+ **/
   getPlaceDistanceUsingGET: InContextSdkMethod<Query['getPlaceDistanceUsingGET'], QuerygetPlaceDistanceUsingGETArgs, MeshContext>,
-  /** Get place date-time **/
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/places/{args.placeId}/dateTime`
+Get place date-time
+ **/
   getPlaceDateTimeUsingGET: InContextSdkMethod<Query['getPlaceDateTimeUsingGET'], QuerygetPlaceDateTimeUsingGETArgs, MeshContext>,
-  /** Get the details for the containing populated place (e.g., its county or other administrative division), including location coordinates, population, and elevation above sea-level
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/places/{args.placeId}/locatedIn`
+Get the details for the containing populated place (e.g., its county or other administrative division), including location coordinates, population, and elevation above sea-level
 (if available).
+
  **/
   getPlaceLocatedInUsingGET: InContextSdkMethod<Query['getPlaceLocatedInUsingGET'], QuerygetPlaceLocatedInUsingGETArgs, MeshContext>,
-  /** Get place time **/
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/geo/places/{args.placeId}/time`
+Get place time
+ **/
   getPlaceTimeUsingGET: InContextSdkMethod<Query['getPlaceTimeUsingGET'], QuerygetPlaceTimeUsingGETArgs, MeshContext>,
-  /** Find currencies, filtering by optional criteria. If no criteria are set, you will get back all known currencies. **/
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/locale/currencies`
+Find currencies, filtering by optional criteria. If no criteria are set, you will get back all known currencies.
+ **/
   getCurrenciesUsingGET: InContextSdkMethod<Query['getCurrenciesUsingGET'], QuerygetCurrenciesUsingGETArgs, MeshContext>,
-  /** Get all supported languages **/
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/locale/languages`
+Get all supported languages
+ **/
   getLanguagesUsingGET: InContextSdkMethod<Query['getLanguagesUsingGET'], QuerygetLanguagesUsingGETArgs, MeshContext>,
-  /** Get all known locales **/
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/locale/locales`
+Get all known locales
+ **/
   getLocalesUsingGET: InContextSdkMethod<Query['getLocalesUsingGET'], QuerygetLocalesUsingGETArgs, MeshContext>,
-  /** Get all known time-zones **/
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/locale/timezones`
+Get all known time-zones
+ **/
   getTimezonesUsingGET: InContextSdkMethod<Query['getTimezonesUsingGET'], QuerygetTimezonesUsingGETArgs, MeshContext>,
-  /** Get time-zone **/
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/locale/timezones/{args.zoneId}`
+Get time-zone
+ **/
   getTimeZoneUsingGET: InContextSdkMethod<Query['getTimeZoneUsingGET'], QuerygetTimeZoneUsingGETArgs, MeshContext>,
-  /** Get time-zone date-time **/
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/locale/timezones/{args.zoneId}/dateTime`
+Get time-zone date-time
+ **/
   getTimeZoneDateTimeUsingGET: InContextSdkMethod<Query['getTimeZoneDateTimeUsingGET'], QuerygetTimeZoneDateTimeUsingGETArgs, MeshContext>,
-  /** Get time-zone time **/
+  /** 
+>**Method**: `GET`
+>**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+>**Path**: `/locale/timezones/{args.zoneId}/time`
+Get time-zone time
+ **/
   getTimeZoneTimeUsingGET: InContextSdkMethod<Query['getTimeZoneTimeUsingGET'], QuerygetTimeZoneTimeUsingGETArgs, MeshContext>
   };
 

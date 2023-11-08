@@ -7,6 +7,7 @@ directive @globalOptions(sourceName: String, endpoint: String, operationHeaders:
 directive @httpOperation(path: String, operationSpecificHeaders: ObjMap, httpMethod: HTTPMethod, isBinary: Boolean, requestBaseBody: ObjMap, queryParamArgMap: ObjMap, queryStringOptionsByParam: ObjMap) on FIELD_DEFINITION
 
 type Query @globalOptions(sourceName: "GeoDB", endpoint: "http://geodb-free-service.wirefreethought.com/v1/") {
+  "\n>**Method**: `GET`\n>**Base URL**: `https://api.openbrewerydb.org/v1/`\n>**Path**: `breweries?by_city={args.byCity}`\n\n"
   breweries(byCity: String): [query_breweries_items] @httpOperation(path: "breweries?by_city={args.byCity}", httpMethod: GET)
 }
 

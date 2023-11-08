@@ -28,6 +28,14 @@ export type Scalars = {
 };
 
 export type Query = {
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `https://api.openbrewerydb.org/v1/`
+   * >**Path**: `breweries?by_city={args.byCity}`
+   *
+   *
+   */
   breweries?: Maybe<Array<Maybe<query_breweries_items>>>;
 };
 
@@ -67,7 +75,12 @@ export type HTTPMethod =
   | 'PATCH';
 
   export type QuerySdk = {
-      /** undefined **/
+      /** 
+>**Method**: `GET`
+>**Base URL**: `https://api.openbrewerydb.org/v1/`
+>**Path**: `breweries?by_city={args.byCity}`
+
+ **/
   breweries: InContextSdkMethod<Query['breweries'], QuerybreweriesArgs, MeshContext>
   };
 

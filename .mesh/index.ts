@@ -6,8 +6,8 @@ import { getMesh, ExecuteMeshFn, SubscribeMeshFn, MeshContext as BaseMeshContext
 import { MeshStore, FsStoreStorageAdapter } from '@graphql-mesh/store';
 import { path as pathModule } from '@graphql-mesh/cross-helpers';
 import { ImportFn } from '@graphql-mesh/types';
-import type { OpenBreweryDbTypes } from './sources/OpenBreweryDB/types';
 import type { GeoDbTypes } from './sources/GeoDB/types';
+import type { OpenBreweryDbTypes } from './sources/OpenBreweryDB/types';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -43,174 +43,407 @@ export type Scalars = {
 };
 
 export type Query = {
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `https://api.openbrewerydb.org/v1/`
+   * >**Path**: `breweries?by_city={args.byCity}`
+   *
+   *
+   */
   breweries?: Maybe<Array<Maybe<query_breweries_items>>>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/adminDivisions`
    * Find administrative divisions, filtering by optional criteria. If no criteria are set, you will get back all
    * known divisions.
+   *
    *
    */
   findAdminDivisions?: Maybe<findAdminDivisionsUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/adminDivisions/{args.divisionId}`
    * Get administrative division details such as location coordinates, population, and
    * elevation above sea-level (if available).
+   *
    *
    */
   getAdminDivision?: Maybe<getAdminDivisionUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/adminDivisions/{args.divisionId}/nearbyCities`
    * Find cities near the given administrative division, filtering by optional criteria. If no criteria are set, you
    * will get back all known cities.
+   *
    *
    */
   findCitiesNearAdminDivision?: Maybe<findCitiesNearAdminDivisionUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/adminDivisions/{args.divisionId}/nearbyDivisions`
    * Find administrative divisions near the given division, filtering by optional criteria. If no criteria
    * are set, you will get back all known divisions.
+   *
    *
    */
   findDivisionsNearAdminDivision?: Maybe<findDivisionsNearAdminDivisionUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/adminDivisions/{args.divisionId}/nearbyPlaces`
    * Find places near the given administrative division, filtering by optional criteria. If no criteria are set, you
    * will get back all known places.
+   *
    *
    */
   findPlacesNearAdminDivision?: Maybe<findPlacesNearAdminDivisionUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/cities`
    * Find cities, filtering by optional criteria. If no criteria are set, you will get back all known cities.
+   *
    *
    */
   findCities?: Maybe<findCitiesUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/cities/{args.cityId}/nearbyCities`
    * Find cities near the given city, filtering by optional criteria. If no criteria are set, you will get
    * back all cities within the default radius.
+   *
    *
    */
   findCitiesNearCity?: Maybe<findCitiesNearCityUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/cities/{args.cityId}/nearbyDivisions`
    * Find administrative divisions near the given city, filtering by optional criteria. If no criteria are set, you will get
    * back all divisions within the default radius.
+   *
    *
    */
   findDivisionsNearCity?: Maybe<findDivisionsNearCityUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/cities/{args.cityId}/nearbyPlaces`
    * Find places near the given city, filtering by optional criteria. If no criteria are set, you will get
    * back all places within the default radius.
+   *
    *
    */
   findPlacesNearCity?: Maybe<findPlacesNearCityUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/cities/{args.cityId}`
    * Get city details such as location coordinates, population, and elevation above sea-level
    * (if available).
    *
+   *
    */
   getCity?: Maybe<getCityUsingGET_response>;
-  /** Get distance from the given city */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/cities/{args.cityId}/distance`
+   * Get distance from the given city
+   *
+   */
   getCityDistance?: Maybe<getCityDistanceUsingGET_response>;
-  /** Get city date-time */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/cities/{args.cityId}/dateTime`
+   * Get city date-time
+   *
+   */
   getCityDateTime?: Maybe<getCityDateTimeUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/cities/{args.cityId}/locatedIn`
    * Get the details for the containing populated place (e.g., its county or other administrative division), including location coordinates, population, and elevation above sea-level
    * (if available).
    *
+   *
    */
   getCityLocatedIn?: Maybe<getCityLocatedInUsingGET_response>;
-  /** Get city time */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/cities/{args.cityId}/time`
+   * Get city time
+   *
+   */
   getCityTime?: Maybe<getCityTimeUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/countries`
    * Find countries, filtering by optional criteria. If no criteria are set, you will get back all known countries.
+   *
    *
    */
   getCountries?: Maybe<getCountriesUsingGET_response>;
-  /** Get country details such as number of regions. */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/countries/{args.countryId}`
+   * Get country details such as number of regions.
+   *
+   */
   getCountry?: Maybe<getCountryUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/countries/{args.countryId}/places`
    * Get the country's places. The country is omitted in the response.
+   *
    *
    */
   findCountryPlaces?: Maybe<findCountryPlacesUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/countries/{args.countryId}/regions`
    * Get the country's regions. These could be states, provinces, districts, or otherwise major
    * political divisions.
    *
+   *
    */
   getRegions?: Maybe<getRegionsUsingGET_response>;
-  /** Get country region details such as number of cities. */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/countries/{args.countryId}/regions/{args.regionCode}`
+   * Get country region details such as number of cities.
+   *
+   */
   getRegion?: Maybe<getRegionUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/countries/{args.countryId}/regions/{args.regionCode}/adminDivisions`
    * Get country region administrative divisions. The country and region info is omitted in the
    * response.
+   *
    *
    */
   findRegionDivisions?: Maybe<findRegionDivisionsUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/countries/{args.countryId}/regions/{args.regionCode}/cities`
    * Get country region cities. The country and region info is omitted in the response.
+   *
    *
    */
   findRegionCities?: Maybe<findRegionCitiesUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/countries/{args.countryId}/regions/{args.regionCode}/places`
    * Get country region places. The country and region info is omitted in the response.
+   *
    *
    */
   findRegionPlaces?: Maybe<findRegionPlacesUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/locations/{args.locationId}/nearbyCities`
    * Find cities near the given location, filtering by optional criteria. If no criteria are set, you will get back
    * all cities within the default radius.
+   *
    *
    */
   findCitiesNearLocation?: Maybe<findCitiesNearLocationUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/locations/{args.locationId}/nearbyDivisions`
    * Find administrative divisions near the given location, filtering by optional criteria. If no criteria are set,
    * you will get back all divisions within the default radius.
+   *
    *
    */
   findDivisionsNearLocation?: Maybe<findDivisionsNearLocationUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/locations/{args.locationId}/nearbyPlaces`
    * Find places near the given location, filtering by optional criteria. If no criteria are set, you will get back
    * all places within the default radius.
+   *
    *
    */
   findPlacesNearLocation?: Maybe<findPlacesNearLocationUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/places`
    * Find places, filtering by optional criteria. If no criteria are set, you will get back all known places.
+   *
    *
    */
   findPlaces?: Maybe<findPlacesUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/places/{args.placeId}/nearbyPlaces`
    * Find places near the given place, filtering by optional criteria. If no criteria are set, you will get
    * back all places within the default radius.
+   *
    *
    */
   findPlacesNearPlace?: Maybe<findPlacesNearPlaceUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/places/{args.placeId}`
    * Get place details such as location coordinates, population, and elevation above sea-level
    * (if available).
    *
+   *
    */
   getPlace?: Maybe<getPlaceUsingGET_response>;
-  /** Get distance from the given place */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/places/{args.placeId}/distance`
+   * Get distance from the given place
+   *
+   */
   getPlaceDistance?: Maybe<getPlaceDistanceUsingGET_response>;
-  /** Get place date-time */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/places/{args.placeId}/dateTime`
+   * Get place date-time
+   *
+   */
   getPlaceDateTime?: Maybe<getPlaceDateTimeUsingGET_response>;
   /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/places/{args.placeId}/locatedIn`
    * Get the details for the containing populated place (e.g., its county or other administrative division), including location coordinates, population, and elevation above sea-level
    * (if available).
    *
+   *
    */
   getPlaceLocatedIn?: Maybe<getPlaceLocatedInUsingGET_response>;
-  /** Get place time */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/geo/places/{args.placeId}/time`
+   * Get place time
+   *
+   */
   getPlaceTime?: Maybe<getPlaceTimeUsingGET_response>;
-  /** Find currencies, filtering by optional criteria. If no criteria are set, you will get back all known currencies. */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/locale/currencies`
+   * Find currencies, filtering by optional criteria. If no criteria are set, you will get back all known currencies.
+   *
+   */
   getCurrencies?: Maybe<getCurrenciesUsingGET_response>;
-  /** Get all supported languages */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/locale/languages`
+   * Get all supported languages
+   *
+   */
   getLanguages?: Maybe<getLanguagesUsingGET_response>;
-  /** Get all known locales */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/locale/locales`
+   * Get all known locales
+   *
+   */
   getLocales?: Maybe<getLocalesUsingGET_response>;
-  /** Get all known time-zones */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/locale/timezones`
+   * Get all known time-zones
+   *
+   */
   getTimezones?: Maybe<getTimezonesUsingGET_response>;
-  /** Get time-zone */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/locale/timezones/{args.zoneId}`
+   * Get time-zone
+   *
+   */
   getTimeZone?: Maybe<getTimeZoneUsingGET_response>;
-  /** Get time-zone date-time */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/locale/timezones/{args.zoneId}/dateTime`
+   * Get time-zone date-time
+   *
+   */
   getTimeZoneDateTime?: Maybe<getTimeZoneDateTimeUsingGET_response>;
-  /** Get time-zone time */
+  /**
+   *
+   * >**Method**: `GET`
+   * >**Base URL**: `http://geodb-free-service.wirefreethought.com/v1/`
+   * >**Path**: `/locale/timezones/{args.zoneId}/time`
+   * Get time-zone time
+   *
+   */
   getTimeZoneTime?: Maybe<getTimeZoneTimeUsingGET_response>;
 };
 
